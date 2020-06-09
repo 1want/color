@@ -1,29 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-const Home = () =>
-  import(/*webpackChunkName: 'home' */ '../views/home/index.vue')
-const Search = () =>
-  import(/*webpackChunkName: 'home' */ '../views/search/index.vue')
+const Color = () =>
+  import(/*webpackChunkName: 'home' */ '../views/color/index.vue')
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    component: Home
+    component: Color
   },
   {
-    path: '/home',
-    component: Home
-  },
-  {
-    path: '/search',
-    component: Search
+    path: '/color',
+    component: Color
   },
   {
     path: '*',
-    redirect: '/home'
+    redirect: '/color'
   }
 ]
 
