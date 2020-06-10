@@ -150,6 +150,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '../../../assets/css/choice.css';
+
 .wrapper {
   height: 100vh;
   background: #110c1b;
@@ -157,12 +159,11 @@ export default {
   justify-content: center;
 
   main {
-    width: 70%;
     display: flex;
     flex-wrap: wrap;
     margin: 70px 0 40px 0;
     .content {
-      flex: 20%;
+      width: 20%;
       height: 50%;
       position: relative;
 
