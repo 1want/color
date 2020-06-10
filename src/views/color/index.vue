@@ -45,7 +45,7 @@ header {
       &:nth-child(1) {
         width: 63%;
         margin-left: 50px;
-        font-size: 1.5rem;
+        font-size: 2rem;
         font-weight: 500;
       }
     }
