@@ -15,10 +15,8 @@ module.exports = {
     // 用cdn方式引入
     config.set('externals', {
       vue: 'Vue',
-      // vuex: 'Vuex',
       'vue-router': 'VueRouter',
       'element-ui': 'ELEMENT'
-      // axios: 'axios'
     })
   },
   configureWebpack: config => {

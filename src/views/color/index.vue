@@ -1,15 +1,22 @@
 <template>
   <div class="all">
     <header>
-      <ul>
+      <ul id="menu">
         <li>Color ui</li>
         <li>ColorBoard</li>
         <li>Custom</li>
         <li>FeedBack</li>
       </ul>
     </header>
-    <Choice></Choice>
-    <Change></Change>
+
+    <full-page :options="options">
+      <div class="section">
+        <Choice></Choice>
+      </div>
+      <div class="section">
+        <Change></Change>
+      </div>
+    </full-page>
   </div>
 </template>
 
@@ -18,6 +25,16 @@ import Change from './change'
 import Choice from './choice'
 
 export default {
+  data() {
+    return {
+      options: {
+        menu: '#menu',
+        navigation: true,
+        anchors: ['page1', 'page2', 'page3'],
+        sectionsColor: ['#41b883', '#ff5f45', '#0798ec']
+      }
+    }
+  },
   components: {
     Change,
     Choice
@@ -26,6 +43,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '../../assets/css/header.css';
 header {
   height: 70px;
   position: fixed;

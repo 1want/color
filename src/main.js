@@ -2,8 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import VueClipboard from 'vue-clipboard2'
-import 'fullpage.js/vendors/scrolloverflow'
-// import './fullpage.scrollHorizontally.min'
 import VueFullPage from 'vue-fullpage.js'
 
 import './assets/css/reset.css'

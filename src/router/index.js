@@ -15,6 +15,7 @@ const routes = [
     path: '/color',
     component: Color
   },
+
   {
     path: '*',
     redirect: '/color'
