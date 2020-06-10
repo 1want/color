@@ -247,6 +247,9 @@
 
 <script>
 export default {
+  data() {
+    return {}
+  },
   methods: {
     // 复制面板中的颜色
     onCopy() {
@@ -269,7 +272,10 @@ export default {
 <style lang="less" scoped>
 .wrapper {
   height: 100vh;
+  background: #110c1b;
   main {
+    width: 70%;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     height: 100%;
@@ -278,6 +284,7 @@ export default {
       flex: 10%;
       height: 50%;
       position: relative;
+
       .container {
         height: 50%;
         display: flex;

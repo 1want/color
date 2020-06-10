@@ -86,8 +86,16 @@ a {
   color: #fff;
 }
 
-.header {
-  padding: 0 2px;
+@media screen and (max-width: 600px) {
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  li:nth-child(1) {
+    display: none;
+  }
+  li:nth-child(2) {
+    margin-left: 200px;
+  }
 }
-
-

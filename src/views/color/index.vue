@@ -1,13 +1,15 @@
 <template>
   <div class="all">
+    <header>
+      <ul>
+        <li>Color ui</li>
+        <li>ColorBoard</li>
+        <li>Custom</li>
+        <li>FeedBack</li>
+      </ul>
+    </header>
     <Choice></Choice>
     <Change></Change>
-    <div>
-      <a href="https://github.com/1want/color">
-        <i class="el-icon-chat-line-round" @click="feedback"></i>
-        <span>反馈</span>
-      </a>
-    </div>
   </div>
 </template>
 
@@ -24,24 +26,28 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.all {
-  width: 80%;
-  margin: 0 auto;
-  a {
-    font-size: 38px;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    height: 60px;
+header {
+  height: 70px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  color: #fff;
+  width: 100vw;
+  ul {
+    display: flex;
+    width: 100vw;
     cursor: pointer;
-    color: #000;
-    &:hover span {
-      display: block;
-    }
-    span {
-      display: none;
-      color: #000;
-      font-size: 18px;
+    li {
+      line-height: 70px;
+      margin: 0 20px;
+      font-size: 1.1rem;
+      font-family: arial, helvetic;
+      &:nth-child(1) {
+        width: 63%;
+        margin-left: 50px;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
     }
   }
 }

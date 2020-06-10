@@ -63,15 +63,17 @@ export default {
 <style lang="less">
 .wrappers {
   height: 100vh;
-  background: #1a81ac;
+  display: flex;
+  justify-content: center;
+  background: #655b72;
   .contents {
-    width: 200px;
-    height: 200px;
-    background: red;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    margin-top: 70px;
+    text-align: center;
+    line-height: 400px;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     &:hover span {
       display: block;
     }
@@ -84,5 +86,11 @@ export default {
 }
 .el-message {
   min-width: 140px;
+}
+.el-button {
+  height: 40px;
+  width: 100px;
+  margin-top: 500px;
+  position: absolute;
 }
 </style>
