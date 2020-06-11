@@ -154,7 +154,6 @@ export default {
 
 .wrapper {
   height: 100vh;
-  background: #110c1b;
   display: flex;
   justify-content: center;
 

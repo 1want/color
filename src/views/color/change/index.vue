@@ -1,9 +1,13 @@
 <template>
   <div class="wrappers">
-    <div class="contents" ref="content">
-      <span v-clipboard:copy="col" v-clipboard:success="onCopy">{{ col }}</span>
+    <div class="container">
+      <div class="contents" ref="content">
+        <span v-clipboard:copy="col" v-clipboard:success="onCopy">{{
+          col
+        }}</span>
+      </div>
+      <el-button type="success" plain @click="chance">check</el-button>
     </div>
-    <el-button type="success" plain @click="chance">check</el-button>
   </div>
 </template>
 
@@ -63,34 +67,34 @@ export default {
 <style lang="less">
 .wrappers {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  background: #655b72;
-  .contents {
-    width: 400px;
-    height: 400px;
-    border-radius: 10px;
+  .container {
     margin-top: 70px;
-    text-align: center;
-    line-height: 400px;
-    cursor: pointer;
-    &:hover span {
-      display: block;
+    display: flex;
+    justify-content: center;
+    .contents {
+      width: 400px;
+      height: 400px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 400px;
+      cursor: pointer;
+      &:hover span {
+        display: block;
+      }
+      span {
+        color: #fff;
+        font-size: 1.5em;
+        display: none;
+      }
     }
-    span {
-      color: #fff;
-      font-size: 1.5em;
-      display: none;
+    .el-button {
+      position: absolute;
+      margin-top: 450px;
+      width: 100px;
     }
   }
 }
 .el-message {
   min-width: 140px;
-}
-.el-button {
-  height: 40px;
-  width: 100px;
-  margin-top: 500px;
-  position: absolute;
 }
 </style>
