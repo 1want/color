@@ -34,12 +34,6 @@ export default {
     // 改变面板颜色
     chance() {
       this.random()
-      let msgLength = document.getElementsByClassName('el-message').length
-      if (msgLength !== 0) {
-        msgLength == 0
-        console.log(msgLength)
-      }
-      console.log(msgLength)
     },
 
     // 复制面板中的颜色
@@ -51,7 +45,7 @@ export default {
         this.$message({
           message: '复制成功',
           type: 'success',
-          duration: 1000
+          duration: 800
         })
       }
       return
@@ -95,6 +89,6 @@ export default {
   }
 }
 .el-message {
-  min-width: 140px;
+  min-width: 140px !important;
 }
 </style>

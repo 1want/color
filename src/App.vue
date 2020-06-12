@@ -59,14 +59,15 @@ export default {
 
 <style lang="less" scoped>
 @import './assets/css/header.css';
+
 header {
   position: fixed;
   z-index: 10;
   color: #fff;
   width: 100vw;
   #menu {
+    display: flex;
     li {
-      display: inline-block;
       margin: 10px 0;
       position: relative;
       font-family: arial;
@@ -99,13 +100,12 @@ header {
       background: #fff;
       display: block;
       position: absolute;
-      bottom: -6px;
+      bottom: 5px;
       left: 0;
       right: 0;
       display: block;
     }
     a {
-      color: #fff;
       padding: 0 1.1em 0 1.1em;
     }
   }

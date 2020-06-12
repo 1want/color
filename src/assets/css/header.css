@@ -1,5 +1,5 @@
 @media screen and (max-width: 600px) {
-  ul {
+  #menu {
     display: flex;
     justify-content: center;
     align-items: center;
