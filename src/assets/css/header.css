@@ -2,12 +2,9 @@
   #menu {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-right: -30px;
   }
-  li:nth-child(1) {
+  .logo {
     display: none;
-  }
-  li:nth-child(2) {
-    margin-left: 200px;
   }
 }

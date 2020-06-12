@@ -1,17 +1,19 @@
 <template>
   <div class="all">
     <header>
+      <div class="logo">
+        <img src="./assets/img/4.png" alt="" />
+      </div>
       <ul id="menu">
-        <li>
-          <span>C</span><span>o</span><span>l</span><span>o</span><span>r</span>
-        </li>
         <li data-menuanchor="colorboard" class="active">
           <a href="#colorboard">ColorBoard</a>
         </li>
         <li data-menuanchor="gradient"><a href="#gradient">Gradient</a></li>
         <li data-menuanchor="change"><a href="#change">Custom</a></li>
         <li>
-          <a href="https://github.com/1want/color" target="blank">FeedBack</a>
+          <a href="https://github.com/1want/color" target="blank"
+            ><img src="./assets/img/1.png" alt=""
+          /></a>
         </li>
       </ul>
     </header>
@@ -21,10 +23,9 @@
         <Choice></Choice>
       </div>
       <div class="section">
-        <Gradient></Gradient>
-        <div class="slide">section1</div>
-        <div class="slide">section2</div>
-        <div class="slide">section3</div>
+        <div class="slide"><Section1></Section1></div>
+        <div class="slide"><Section2></Section2></div>
+        <div class="slide"><Section3></Section3></div>
       </div>
       <div class="section">
         <Change></Change>
@@ -36,7 +37,9 @@
 <script>
 import Change from './views/color/change'
 import Choice from './views/color/choice'
-// import Gradient from './gradient'
+import Section1 from './views/color/gradient/section1'
+import Section2 from './views/color/gradient/section2'
+import Section3 from './views/color/gradient/section3'
 
 export default {
   data() {
@@ -45,14 +48,16 @@ export default {
         menu: '#menu',
         // navigation: true,
         anchors: ['colorboard', 'gradient', 'change'],
-        sectionsColor: ['#110c1b', '#282632', '#0b0a11']
+        sectionsColor: ['#fff', '#ececec', '#F5F5F5']
       }
     }
   },
   components: {
     Change,
-    Choice
-    // Gradient
+    Choice,
+    Section1,
+    Section2,
+    Section3
   }
 }
 </script>
@@ -63,50 +68,48 @@ export default {
 header {
   position: fixed;
   z-index: 10;
-  color: #fff;
   width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  .logo {
+    margin-left: 50px;
+    img {
+      width: 120px;
+      margin-top: -35px;
+    }
+  }
+
   #menu {
     display: flex;
+    margin-right: 2%;
     li {
-      margin: 10px 0;
+      margin: 20px 10px;
       position: relative;
       font-family: arial;
-      &:nth-child(1) {
-        width: 63%;
-        margin-left: 50px;
-        font-size: 2rem;
-        font-family: Georgia;
-      }
-      span:nth-child(1) {
-        color: #6080f3;
-      }
-      span:nth-child(2) {
-        color: #789eed;
-      }
-      span:nth-child(3) {
-        color: #96c6e4;
-      }
-      span:nth-child(4) {
-        color: #a9dfdf;
-      }
-      span:nth-child(5) {
-        color: #bffbd8;
+    }
+    li:nth-child(4) {
+      img {
+        width: 40px;
+        margin-top: -10px;
+        border-radius: 50%;
       }
     }
     li.active a:after {
       content: '';
       margin: 0 1.1em 0 1.1em;
-      height: 2px;
-      background: #fff;
+      height: 1.5px;
+      background: #000;
       display: block;
       position: absolute;
-      bottom: 5px;
+      bottom: -15px;
       left: 0;
       right: 0;
       display: block;
     }
     a {
       padding: 0 1.1em 0 1.1em;
+      color: #000;
     }
   }
 }

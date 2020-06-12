@@ -1,8 +1,10 @@
 import Vue from 'vue'
-import { Button, Message } from 'element-ui'
+import { Button, Message, ColorPicker } from 'element-ui'
 
 Message.install = Vue => {
   Vue.prototype.$message = Message
 }
 
-Vue.use(Button).use(Message)
+Vue.use(Button)
+  .use(Message)
+  .use(ColorPicker)

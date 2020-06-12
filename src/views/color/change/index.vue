@@ -6,7 +6,7 @@
           col
         }}</span>
       </div>
-      <el-button type="success" plain @click="chance">check</el-button>
+      <xy-button @click="chance">check</xy-button>
     </div>
   </div>
 </template>
@@ -48,7 +48,6 @@ export default {
           duration: 800
         })
       }
-      return
     }
   },
   mounted() {
@@ -69,8 +68,9 @@ export default {
       width: 400px;
       height: 400px;
       border-radius: 10px;
-      text-align: center;
-      line-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
       &:hover span {
         display: block;
@@ -78,13 +78,13 @@ export default {
       span {
         color: #fff;
         font-size: 1.5em;
-        display: none;
       }
     }
-    .el-button {
+    xy-button {
       position: absolute;
       margin-top: 450px;
-      width: 100px;
+      width: 120px;
+      height: 40px;
     }
   }
 }
