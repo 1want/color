@@ -46,7 +46,6 @@ export default {
     return {
       options: {
         menu: '#menu',
-        // navigation: true,
         anchors: ['colorboard', 'gradient', 'change'],
         sectionsColor: ['#fff', '#ececec', '#F5F5F5']
       }

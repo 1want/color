@@ -6,7 +6,7 @@
           col
         }}</span>
       </div>
-      <xy-button @click="chance">check</xy-button>
+      <el-button type="success" plain @click="chance">check</el-button>
     </div>
   </div>
 </template>
@@ -80,7 +80,7 @@ export default {
         font-size: 1.5em;
       }
     }
-    xy-button {
+    .el-button {
       position: absolute;
       margin-top: 450px;
       width: 120px;
