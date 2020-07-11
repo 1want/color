@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <main>
+<<<<<<< HEAD
       <div class="container" v-for="(item, index) in allColor" :key="index">
         <div class="color" ref="bigColor"></div>
         <div class="set">
@@ -17,11 +18,29 @@
           </div>
         </div>
       </div>
+=======
+      <div class="container">
+        <div class="color">color</div>
+        <div class="set">
+          <div class="edit">a</div>
+          <div class="edit">b</div>
+        </div>
+      </div>
+
+      <div class="container">2</div>
+      <div class="container">3</div>
+      <div class="container">4</div>
+      <div class="container">5</div>
+      <div class="container">6</div>
+      <div class="container">7</div>
+      <div class="container">8</div>
+>>>>>>> 27b58c6b32f55fcf71e127e2372a141b8088148e
     </main>
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import { Chrome } from 'vue-color'
 
 export default {
@@ -107,6 +126,11 @@ export default {
         this.$refs.bigColor[i].style.background = this.allColor[i].bigColor
       }
     }
+=======
+export default {
+  data() {
+    return {}
+>>>>>>> 27b58c6b32f55fcf71e127e2372a141b8088148e
   }
 }
 </script>
@@ -116,15 +140,23 @@ export default {
   height: 100vh;
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   main {
     display: flex;
     flex-wrap: wrap;
     margin: 100px 0 40px 0;
+=======
+  align-items: center;
+  main {
+    display: flex;
+    flex-wrap: wrap;
+>>>>>>> 27b58c6b32f55fcf71e127e2372a141b8088148e
     .container {
       border-radius: 10px;
       margin: 2px;
       width: 24%;
       height: 260px;
+<<<<<<< HEAD
       position: relative;
       .color {
         height: 80%;
@@ -137,11 +169,19 @@ export default {
         // );
         // background-image: -moz-linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
         // background-image: -o-linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+=======
+      background: blue;
+      .color {
+        height: 80%;
+        border-radius: 10px;
+        background: red;
+>>>>>>> 27b58c6b32f55fcf71e127e2372a141b8088148e
       }
       .set {
         display: flex;
         margin-top: 10px;
         margin-left: 10px;
+<<<<<<< HEAD
         .btnColor {
           margin: 0 6px;
           width: 30px;
@@ -154,6 +194,15 @@ export default {
           left: -80px;
           top: -35px;
         }
+=======
+        .edit {
+          margin: 0 10px;
+          width: 30px;
+          height: 30px;
+          background: yellow;
+          border-radius: 50%;
+        }
+>>>>>>> 27b58c6b32f55fcf71e127e2372a141b8088148e
       }
     }
   }

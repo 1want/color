@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="wrapper">
     <main>
       <div class="container" v-for="(item, index) in allColor" :key="index">
@@ -147,3 +148,13 @@ export default {
   }
 }
 </style>
+=======
+  <div></div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style lang="less" scoped></style>
+>>>>>>> 27b58c6b32f55fcf71e127e2372a141b8088148e
