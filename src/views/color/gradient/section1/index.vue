@@ -2,33 +2,27 @@
   <div class="wrapper">
     <main>
       <div class="container" v-for="(item, index) in allColor" :key="index">
-<<<<<<< HEAD
-        <div class="color" :style="{ background: item.bigColor }"></div>
-=======
         <div class="color" ref="bigColor"></div>
->>>>>>> c56ec8d1037acb2cffff2a8e6f5fd5641723686a
         <div class="set">
           <div
             class="btnColor"
             @click="showColor(items)"
             v-for="(items, idx) in item.chromeColor"
             :key="idx"
-<<<<<<< HEAD
             :style="{ background: items.color.hex }"
           >
             <div v-show="items.show">
               <chrome-picker
                 v-model="items.color"
-                @click.native="updataChrome"
+                @click.native="updataChrome(index)"
               />
-=======
-            :style="{ backgroundColor: items.color.hex }"
-          >
-            <div v-show="items.show">
-              <chrome-picker v-model="items.color" />
->>>>>>> c56ec8d1037acb2cffff2a8e6f5fd5641723686a
             </div>
           </div>
+        </div>
+        <div class="footer">
+          <span class="iconfont icon-tianjia" @click="add(index)"></span>
+          <span class="iconfont icon-shuaxin"></span>
+          <span class="iconfont icon-kaobei"></span>
         </div>
       </div>
     </main>
@@ -101,38 +95,39 @@ export default {
       ]
     }
   },
-<<<<<<< HEAD
-=======
-  mounted() {
-    this.start()
-  },
->>>>>>> c56ec8d1037acb2cffff2a8e6f5fd5641723686a
   components: {
     'chrome-picker': Chrome
+  },
+  mounted() {
+    this.updateColor()
   },
   methods: {
     showColor(item) {
       item.show = !item.show
     },
-<<<<<<< HEAD
     updateColor() {
-      for (const box of this.allColor) {
-        box.bigColor =
-          'linear-gradient(to top right,' +
-          box.chromeColor[0].color.hex +
-          ',' +
-          box.chromeColor[1].color.hex +
-          ')'
-      }
-    },
-    updataChrome() {
-      this.updateColor()
-=======
-    start() {
       for (let i = 0; i < this.allColor.length; i++) {
         this.$refs.bigColor[i].style.background = this.allColor[i].bigColor
       }
->>>>>>> c56ec8d1037acb2cffff2a8e6f5fd5641723686a
+    },
+    // 当改变chrome选择器的颜色时重新刷新颜色
+    updataChrome(index) {
+      let colors = this.allColor[index]
+      let head = ''
+      for (let i = 0; i < colors.chromeColor.length; i++) {
+        head += ',' + colors.chromeColor[i].color.hex
+        colors.bigColor = 'linear-gradient(to top right' + head + ')'
+      }
+      this.updateColor()
+    },
+    add(index) {
+      this.allColor[index].chromeColor.push({
+        color: {
+          hex: '#000'
+        },
+        show: false
+      })
+      this.updataChrome()
     }
   }
 }
@@ -152,17 +147,32 @@ export default {
       margin: 2px;
       width: 24%;
       height: 260px;
+      margin-bottom: 35px;
       position: relative;
       .color {
         height: 80%;
         border-radius: 10px;
+      }
+      .footer {
+        width: 250px;
+        margin-top: 10px;
+        height: 40px;
+        span {
+          font-size: 22px;
+          margin: 15px;
+          color: #6278de;
+          margin-left: 14px;
+          &:hover {
+            color: #57a3f3;
+          }
+        }
       }
       .set {
         display: flex;
         margin-top: 10px;
         margin-left: 10px;
         .btnColor {
-          margin: 0 6px;
+          margin-right: 24px;
           width: 30px;
           height: 30px;
           border-radius: 50%;
