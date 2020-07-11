@@ -2,13 +2,18 @@
   <div class="wrapper">
     <main>
       <div class="container" v-for="(item, index) in allColor" :key="index">
+<<<<<<< HEAD
         <div class="color" :style="{ background: item.bigColor }"></div>
+=======
+        <div class="color" ref="bigColor"></div>
+>>>>>>> c56ec8d1037acb2cffff2a8e6f5fd5641723686a
         <div class="set">
           <div
             class="btnColor"
             @click="showColor(items)"
             v-for="(items, idx) in item.chromeColor"
             :key="idx"
+<<<<<<< HEAD
             :style="{ background: items.color.hex }"
           >
             <div v-show="items.show">
@@ -16,6 +21,12 @@
                 v-model="items.color"
                 @click.native="updataChrome"
               />
+=======
+            :style="{ backgroundColor: items.color.hex }"
+          >
+            <div v-show="items.show">
+              <chrome-picker v-model="items.color" />
+>>>>>>> c56ec8d1037acb2cffff2a8e6f5fd5641723686a
             </div>
           </div>
         </div>
@@ -90,6 +101,12 @@ export default {
       ]
     }
   },
+<<<<<<< HEAD
+=======
+  mounted() {
+    this.start()
+  },
+>>>>>>> c56ec8d1037acb2cffff2a8e6f5fd5641723686a
   components: {
     'chrome-picker': Chrome
   },
@@ -97,6 +114,7 @@ export default {
     showColor(item) {
       item.show = !item.show
     },
+<<<<<<< HEAD
     updateColor() {
       for (const box of this.allColor) {
         box.bigColor =
@@ -109,6 +127,12 @@ export default {
     },
     updataChrome() {
       this.updateColor()
+=======
+    start() {
+      for (let i = 0; i < this.allColor.length; i++) {
+        this.$refs.bigColor[i].style.background = this.allColor[i].bigColor
+      }
+>>>>>>> c56ec8d1037acb2cffff2a8e6f5fd5641723686a
     }
   }
 }
