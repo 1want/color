@@ -21,8 +21,13 @@
         </div>
         <div class="footer">
           <span class="iconfont icon-tianjia" @click="add(index)"></span>
-          <span class="iconfont icon-shuaxin"></span>
-          <span class="iconfont icon-kaobei"></span>
+          <span class="iconfont icon-shuaxin" @click="reset(index)"></span>
+          <span
+            class="iconfont icon-kaobei"
+            @click="copy(index)"
+            v-clipboard:copy="res"
+            v-clipboard:success="onCopy"
+          ></span>
         </div>
       </div>
     </main>
@@ -92,7 +97,8 @@ export default {
             { color: { hex: '#F7CE68' }, show: false }
           ]
         }
-      ]
+      ],
+      res: ''
     }
   },
   components: {
@@ -102,8 +108,13 @@ export default {
     this.updateColor()
   },
   methods: {
-    showColor(item) {
-      item.show = !item.show
+    showColor(items) {
+      items.show = true
+      let bodyEl = document.getElementsByTagName('body')[0]
+      console.log(bodyEl)
+      if (bodyEl != items) {
+        items.show = false
+      }
     },
     updateColor() {
       for (let i = 0; i < this.allColor.length; i++) {
@@ -121,13 +132,46 @@ export default {
       this.updateColor()
     },
     add(index) {
-      this.allColor[index].chromeColor.push({
-        color: {
-          hex: '#000'
-        },
-        show: false
-      })
-      this.updataChrome()
+      if (this.allColor[index].chromeColor.length < 5) {
+        this.allColor[index].chromeColor.push({
+          color: {
+            hex: '#000'
+          },
+          show: false
+        })
+      } else {
+        const msgLength = document.getElementsByClassName('el-message').length
+        if (msgLength === 0) {
+          this.$message({
+            message: '无法添加!',
+            type: 'error'
+          })
+        }
+      }
+    },
+    reset(index) {
+      this.allColor[index].chromeColor = this.allColor[index].chromeColor.slice(
+        0,
+        2
+      )
+    },
+    copy(index) {
+      let head = ''
+      for (let i = 0; i < this.allColor[index].chromeColor.length; i++) {
+        head += ',' + this.allColor[index].chromeColor[i].color.hex
+        this.res = 'linear-gradient(to top right' + head + ')'
+      }
+    },
+    onCopy() {
+      // 防止message触发过于频繁
+      const msgLength = document.getElementsByClassName('el-message').length
+      if (msgLength === 0) {
+        this.$message({
+          message: '复制成功',
+          type: 'success',
+          duration: 800
+        })
+      }
     }
   }
 }
@@ -156,6 +200,7 @@ export default {
       .footer {
         width: 250px;
         margin-top: 10px;
+        margin-left: -6px;
         height: 40px;
         span {
           font-size: 22px;
@@ -170,9 +215,9 @@ export default {
       .set {
         display: flex;
         margin-top: 10px;
-        margin-left: 10px;
+        margin-left: 7px;
         .btnColor {
-          margin-right: 24px;
+          margin-right: 20px;
           width: 30px;
           height: 30px;
           border-radius: 50%;
