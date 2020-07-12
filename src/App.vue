@@ -9,7 +9,7 @@
           <a href="#colorboard">ColorBoard</a>
         </li>
         <li data-menuanchor="gradient"><a href="#gradient">Gradient</a></li>
-        <li data-menuanchor="change"><a href="#change">Custom</a></li>
+        <li data-menuanchor="random"><a href="#random">Random</a></li>
         <li>
           <a href="https://github.com/1want/color" target="blank"
             ><img src="./assets/img/1.png" alt=""
@@ -46,7 +46,7 @@ export default {
     return {
       options: {
         menu: '#menu',
-        anchors: ['colorboard', 'gradient', 'change'],
+        anchors: ['colorboard', 'gradient', 'random'],
         sectionsColor: ['#fff', '#ececec', '#F5F5F5']
       }
     }

@@ -1,17 +1,17 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" @click.self="showColors">
     <main>
       <div class="container" v-for="(item, index) in allColor" :key="index">
         <div class="color" ref="bigColor"></div>
         <div class="set">
           <div
-            class="btnColor"
             @click="showColor(items)"
+            class="btnColor"
             v-for="(items, idx) in item.chromeColor"
             :key="idx"
             :style="{ background: items.color.hex }"
           >
-            <div v-show="items.show">
+            <div @click="chrome(items)" v-show="items.show">
               <chrome-picker
                 v-model="items.color"
                 @click.native="updataChrome(index)"
@@ -42,17 +42,18 @@ export default {
     return {
       allColor: [
         {
-          bigColor: 'linear-gradient(to top right ,#8EC5FC, #E0C3FC)',
+          bigColor: 'linear-gradient(to top right ,#FF3CAC, #784BA0,#2B86C5)',
           chromeColor: [
-            { color: { hex: '#8EC5FC' }, show: false },
-            { color: { hex: '#E0C3FC' }, show: false }
+            { color: { hex: '#FF3CAC' }, show: false },
+            { color: { hex: '#784BA0' }, show: false },
+            { color: { hex: '#2B86C5' }, show: false }
           ]
         },
         {
-          bigColor: 'linear-gradient(to top right ,#FAACA8, #DDD6F3)',
+          bigColor: 'linear-gradient(to top right ,#D9AFD9, #97D9E1)',
           chromeColor: [
-            { color: { hex: '#FAACA8' }, show: false },
-            { color: { hex: '#DDD6F3' }, show: false }
+            { color: { hex: '#D9AFD9' }, show: false },
+            { color: { hex: '#97D9E1' }, show: false }
           ]
         },
         {
@@ -91,14 +92,16 @@ export default {
           ]
         },
         {
-          bigColor: 'linear-gradient(to top right ,#FBAB7E, #F7CE68)',
+          bigColor: 'linear-gradient(to top right ,#FF9A8B, #FF6A88,#FF99AC)',
           chromeColor: [
-            { color: { hex: '#FBAB7E' }, show: false },
-            { color: { hex: '#F7CE68' }, show: false }
+            { color: { hex: '#FF9A8B' }, show: false },
+            { color: { hex: '#FF6A88' }, show: false },
+            { color: { hex: '#FF99AC' }, show: false }
           ]
         }
       ],
-      res: ''
+      res: '',
+      newColor: 0
     }
   },
   components: {
@@ -108,11 +111,19 @@ export default {
     this.updateColor()
   },
   methods: {
-    showColor(items) {
-      items.show = true
-      let bodyEl = document.getElementsByTagName('body')[0]
-      console.log(bodyEl)
-      if (bodyEl != items) {
+    showColor(item) {
+      item.show = !item.show
+    },
+    showColors() {
+      for (const key in this.allColor) {
+        for (const i in this.allColor[key].chromeColor) {
+          this.allColor[key].chromeColor[i].show = false
+        }
+      }
+    },
+    chrome(items) {
+      // 如果正在点击当前的chrome则让其show变为false，也就是不隐藏
+      if (items) {
         items.show = false
       }
     },
@@ -135,10 +146,11 @@ export default {
       if (this.allColor[index].chromeColor.length < 5) {
         this.allColor[index].chromeColor.push({
           color: {
-            hex: '#000'
+            hex: '#FFF'
           },
           show: false
         })
+        this.newColor++
       } else {
         const msgLength = document.getElementsByClassName('el-message').length
         if (msgLength === 0) {
@@ -152,8 +164,18 @@ export default {
     reset(index) {
       this.allColor[index].chromeColor = this.allColor[index].chromeColor.slice(
         0,
-        2
+        this.allColor[index].chromeColor.length - this.newColor
       )
+      this.newColor = 0
+      let head = '',
+        color = ''
+      for (const key of this.allColor[index].chromeColor) {
+        color += ',' + key.color.hex
+        head = 'linear-gradient(to top right' + color + ')'
+      }
+      this.allColor[index].bigColor = ''
+      this.allColor[index].bigColor = head
+      this.updateColor()
     },
     copy(index) {
       let head = ''
@@ -221,6 +243,7 @@ export default {
           width: 30px;
           height: 30px;
           border-radius: 50%;
+          background: red;
         }
         .vc-chrome {
           position: absolute;

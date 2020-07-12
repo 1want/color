@@ -1,20 +1,34 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" @click.self="showColors">
     <main>
       <div class="container" v-for="(item, index) in allColor" :key="index">
         <div class="color" ref="bigColor"></div>
         <div class="set">
           <div
-            class="btnColor"
             @click="showColor(items)"
+            class="btnColor"
             v-for="(items, idx) in item.chromeColor"
             :key="idx"
-            :style="{ backgroundColor: items.color.hex }"
+            :style="{ background: items.color.hex }"
           >
-            <div v-show="items.show">
-              <chrome-picker v-model="items.color" />
+            <div @click="chrome(items)" v-show="items.show">
+              <chrome-picker
+                ref="chrome"
+                v-model="items.color"
+                @click.native="updataChrome(index)"
+              />
             </div>
           </div>
+        </div>
+        <div class="footer">
+          <span class="iconfont icon-tianjia" @click="add(index)"></span>
+          <span class="iconfont icon-shuaxin" @click="reset(index)"></span>
+          <span
+            class="iconfont icon-kaobei"
+            @click="copy(index)"
+            v-clipboard:copy="res"
+            v-clipboard:success="onCopy"
+          ></span>
         </div>
       </div>
     </main>
@@ -29,52 +43,18 @@ export default {
     return {
       allColor: [
         {
+          bigColor: 'linear-gradient(to top right ,#FF9A8B, #FF6A88,#FF99AC)',
+          chromeColor: [
+            { color: { hex: '#FF9A8B' }, show: false },
+            { color: { hex: '#FF6A88' }, show: false },
+            { color: { hex: '#FF99AC' }, show: false }
+          ]
+        },
+        {
           bigColor: 'linear-gradient(to top right ,#8EC5FC, #E0C3FC)',
           chromeColor: [
             { color: { hex: '#8EC5FC' }, show: false },
             { color: { hex: '#E0C3FC' }, show: false }
-          ]
-        },
-        {
-          bigColor: 'linear-gradient(to top right ,#FAACA8, #DDD6F3)',
-          chromeColor: [
-            { color: { hex: '#FAACA8' }, show: false },
-            { color: { hex: '#DDD6F3' }, show: false }
-          ]
-        },
-        {
-          bigColor: 'linear-gradient(to top right ,#F4D03F, #16A085)',
-          chromeColor: [
-            { color: { hex: '#F4D03F' }, show: false },
-            { color: { hex: '#16A085' }, show: false }
-          ]
-        },
-        {
-          bigColor: 'linear-gradient(to top right ,#08AEEA, #2AF598)',
-          chromeColor: [
-            { color: { hex: '#08AEEA' }, show: false },
-            { color: { hex: '#2AF598' }, show: false }
-          ]
-        },
-        {
-          bigColor: 'linear-gradient(to top right ,#FEE140, #FA709A)',
-          chromeColor: [
-            { color: { hex: '#FEE140' }, show: false },
-            { color: { hex: '#FA709A' }, show: false }
-          ]
-        },
-        {
-          bigColor: 'linear-gradient(to top right ,#21D4FD, #B721FF)',
-          chromeColor: [
-            { color: { hex: '#21D4FD' }, show: false },
-            { color: { hex: '#B721FF' }, show: false }
-          ]
-        },
-        {
-          bigColor: 'linear-gradient(to top right ,#FAACA8, #DDD6F3)',
-          chromeColor: [
-            { color: { hex: '#FAACA8' }, show: false },
-            { color: { hex: '#DDD6F3' }, show: false }
           ]
         },
         {
@@ -83,23 +63,138 @@ export default {
             { color: { hex: '#FBAB7E' }, show: false },
             { color: { hex: '#F7CE68' }, show: false }
           ]
+        },
+        {
+          bigColor: 'linear-gradient(to top right ,#FA8BFF, #2BD2FF,#2BFF88)',
+          chromeColor: [
+            { color: { hex: '#FA8BFF' }, show: false },
+            { color: { hex: '#2BD2FF' }, show: false },
+            { color: { hex: '#2BD2FF' }, show: false }
+          ]
+        },
+        {
+          bigColor: 'linear-gradient(to top right ,#FAD961, #F76B1C)',
+          chromeColor: [
+            { color: { hex: '#FAD961' }, show: false },
+            { color: { hex: '#F76B1C' }, show: false }
+          ]
+        },
+        {
+          bigColor: 'linear-gradient(to top right ,#FBDA61, #FF5ACD)',
+          chromeColor: [
+            { color: { hex: '#FBDA61' }, show: false },
+            { color: { hex: '#FF5ACD' }, show: false }
+          ]
+        },
+        {
+          bigColor: 'linear-gradient(to top right ,#4158D0, #C850C0,#FFCC70)',
+          chromeColor: [
+            { color: { hex: '#4158D0' }, show: false },
+            { color: { hex: '#C850C0' }, show: false },
+            { color: { hex: '#FFCC70' }, show: false }
+          ]
+        },
+        {
+          bigColor: 'linear-gradient(to top right ,#85FFBD, #FFFB7D)',
+          chromeColor: [
+            { color: { hex: '#85FFBD' }, show: false },
+            { color: { hex: '#FFFB7D' }, show: false }
+          ]
         }
-      ]
+      ],
+      res: '',
+      newColor: 0
     }
-  },
-  mounted() {
-    this.start()
   },
   components: {
     'chrome-picker': Chrome
+  },
+  mounted() {
+    this.updateColor()
   },
   methods: {
     showColor(item) {
       item.show = !item.show
     },
-    start() {
+    showColors() {
+      for (const key in this.allColor) {
+        for (const i in this.allColor[key].chromeColor) {
+          this.allColor[key].chromeColor[i].show = false
+        }
+      }
+    },
+    chrome(items) {
+      // 如果正在点击当前的chrome则让其show变为false，也就是不隐藏
+      if (items) {
+        items.show = false
+      }
+    },
+    updateColor() {
       for (let i = 0; i < this.allColor.length; i++) {
         this.$refs.bigColor[i].style.background = this.allColor[i].bigColor
+      }
+    },
+    // 当改变chrome选择器的颜色时重新刷新颜色
+    updataChrome(index) {
+      let colors = this.allColor[index]
+      let head = ''
+      for (let i = 0; i < colors.chromeColor.length; i++) {
+        head += ',' + colors.chromeColor[i].color.hex
+        colors.bigColor = 'linear-gradient(to top right' + head + ')'
+      }
+      this.updateColor()
+    },
+    add(index) {
+      if (this.allColor[index].chromeColor.length < 5) {
+        this.allColor[index].chromeColor.push({
+          color: {
+            hex: '#FFF'
+          },
+          show: false
+        })
+        this.newColor++
+      } else {
+        const msgLength = document.getElementsByClassName('el-message').length
+        if (msgLength === 0) {
+          this.$message({
+            message: '无法添加!',
+            type: 'error'
+          })
+        }
+      }
+    },
+    reset(index) {
+      this.allColor[index].chromeColor = this.allColor[index].chromeColor.slice(
+        0,
+        this.allColor[index].chromeColor.length - this.newColor
+      )
+      this.newColor = 0
+      let head = '',
+        color = ''
+      for (const key of this.allColor[index].chromeColor) {
+        color += ',' + key.color.hex
+        head = 'linear-gradient(to top right' + color + ')'
+      }
+      this.allColor[index].bigColor = ''
+      this.allColor[index].bigColor = head
+      this.updateColor()
+    },
+    copy(index) {
+      let head = ''
+      for (let i = 0; i < this.allColor[index].chromeColor.length; i++) {
+        head += ',' + this.allColor[index].chromeColor[i].color.hex
+        this.res = 'linear-gradient(to top right' + head + ')'
+      }
+    },
+    onCopy() {
+      // 防止message触发过于频繁
+      const msgLength = document.getElementsByClassName('el-message').length
+      if (msgLength === 0) {
+        this.$message({
+          message: '复制成功',
+          type: 'success',
+          duration: 800
+        })
       }
     }
   }
@@ -120,20 +215,37 @@ export default {
       margin: 2px;
       width: 24%;
       height: 260px;
+      margin-bottom: 35px;
       position: relative;
       .color {
         height: 80%;
         border-radius: 10px;
       }
+      .footer {
+        width: 250px;
+        margin-top: 10px;
+        margin-left: -6px;
+        height: 40px;
+        span {
+          font-size: 22px;
+          margin: 15px;
+          color: #6278de;
+          margin-left: 14px;
+          &:hover {
+            color: #57a3f3;
+          }
+        }
+      }
       .set {
         display: flex;
         margin-top: 10px;
-        margin-left: 10px;
+        margin-left: 7px;
         .btnColor {
-          margin: 0 6px;
+          margin-right: 20px;
           width: 30px;
           height: 30px;
           border-radius: 50%;
+          background: red;
         }
         .vc-chrome {
           position: absolute;
