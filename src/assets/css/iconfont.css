@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../other/iconfont.eot?t=1594468702315'); /* IE9 */
+  src: url('../other/iconfont.eot?t=1594468702315#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */
+      url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAANsAAsAAAAAB3AAAAMeAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqCMIIYATYCJAMQCwoABCAFhG0HRBuGBsgusG3YkyKJNYqkwy73DSEP7t8QwdNYv3m7eyZfE2rRJZtqJYmmQNdMJEHGS7i/7L7eTi+EXgmRcBj0wNXT/wAHyV0MMFa2iA7RZWA8yIQzCCSTcaYHoHvArQwxZ1I25jQfoKovn+eaerE9H1h+O5tLtUVTJRUf7Q1w3Dqg6CLbQCboG6aXNFAXNxNomqRK0MbNU7MQrnB7BeLCWYWH8IpXUViiLlQ7JhbxHCrq6Sn3FcCz5PvxHxoinKSSuQO3nBqWoO8n96sHHfJ1ICJAuZ0DbBoZC4BCnOl0HYOy6AJI0zQPthioq0tsVYO/9fgDZOHCcu8vj5BkospNbYOFKJb5yQUMwS/MkPjVkyLDCzHX3VF8F3ATcyfoA750QkR8cM7eaPT2+pmrySn69dVD11I63JtrZ2+k5Zh3Nw5f39t9+DK7RFV6O9vpKZdfNXeevMmrXHm92g7p3P6w0fy2tiPrO7e5m/K6sWug1lfNxqBlv82D2MLcwti49mtDbsPXSgOoeE/fINsFmxzcsVHnF9kvXTArfq79zsIv93s4eon7+DY/96TRYs/Tnbh3LvfKUtbkwS2zYKaLF7kLUAql4XLNK2UFp65iHrgAg/MXtD7JLj9BuwDIkjb+x298/zD9+npd/9Eq4Eftu63IMahMNIOXqpysfPtKnFMstWsuRWsChe0pJt5DOKHpWXnnSYZ93sI0NjmVUDdWIKmZiKxuBlm4C1DRshBVdWvQNN/o9JYRFBKlgXmOA4S+O0i6PiLr+0gW7idUjPuOqn4gNO2KpAVbZoXWHLxGeEYkLOzGmujYsm9lkWn6NFECJk/L6oQ/T6inBXB9TV09MUpsQrcY4u1QGhiTsUwdC4+A7YhpOtiljk5EVqMy5nbU1spdb6oRHQsibUARPIaQYILdMI3IYZOjwkxk4/PTCEWAiUcHWI3kPILyaPVj9WrUTSBHDfYk1qtc49lB0YBhZJiMcliwEdCOMJkcmNvdTkeImBrqgrCrQ62XT55qqDneZD3hImhyB5ZIkaNERe3GWd7Wg9GhxlFHIFqYdybA79JsAAAA')
+      format('woff2'),
+    url('../other/iconfont.woff?t=1594468702315') format('woff'),
+    url('../other/iconfont.ttf?t=1594468702315') format('truetype'),
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+      url('../other/iconfont.svg?t=1594468702315#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tianjia:before {
+  content: '\e502';
+}
+
+.icon-kaobei:before {
+  content: '\e620';
+}
+
+.icon-shuaxin:before {
+  content: '\e63e';
+}
