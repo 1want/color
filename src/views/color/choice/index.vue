@@ -149,7 +149,11 @@ export default {
 }
 </script>
 
+<<<<<<< HEAD
 <style lang="less">
+=======
+<style lang="less" scoped>
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
 @import '../../../assets/css/choice.css';
 
 .wrapper {
@@ -183,8 +187,11 @@ export default {
     }
   }
 }
+<<<<<<< HEAD
 
 .el-message {
   min-width: 140px !important;
 }
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
 </style>

@@ -2,11 +2,15 @@
   <div class="wrapper" @click.self="showColors">
     <main>
       <div class="container" v-for="(item, index) in allColor" :key="index">
+<<<<<<< HEAD
         <div
           class="color"
           ref="bigColor"
           :style="{ background: item.bigColor }"
         ></div>
+=======
+        <div class="color" ref="bigColor"></div>
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
         <div class="set">
           <div
             @click="showColor(items)"
@@ -47,7 +51,10 @@ export default {
       allColor: [
         {
           bigColor: 'linear-gradient(to top right ,#FF3CAC, #784BA0,#2B86C5)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FF3CAC' }, show: false },
             { color: { hex: '#784BA0' }, show: false },
@@ -56,7 +63,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#D9AFD9, #97D9E1)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#D9AFD9' }, show: false },
             { color: { hex: '#97D9E1' }, show: false }
@@ -64,7 +74,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#F4D03F, #16A085)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#F4D03F' }, show: false },
             { color: { hex: '#16A085' }, show: false }
@@ -72,7 +85,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#08AEEA, #2AF598)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#08AEEA' }, show: false },
             { color: { hex: '#2AF598' }, show: false }
@@ -80,7 +96,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#FEE140, #FA709A)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FEE140' }, show: false },
             { color: { hex: '#FA709A' }, show: false }
@@ -88,7 +107,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#21D4FD, #B721FF)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#21D4FD' }, show: false },
             { color: { hex: '#B721FF' }, show: false }
@@ -96,7 +118,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#FAACA8, #DDD6F3)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FAACA8' }, show: false },
             { color: { hex: '#DDD6F3' }, show: false }
@@ -104,7 +129,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#FF9A8B, #FF6A88,#FF99AC)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FF9A8B' }, show: false },
             { color: { hex: '#FF6A88' }, show: false },
@@ -120,7 +148,11 @@ export default {
     'chrome-picker': Chrome
   },
   mounted() {
+<<<<<<< HEAD
     // this.updateColor()
+=======
+    this.updateColor()
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
   },
   methods: {
     showColor(item) {
@@ -139,6 +171,7 @@ export default {
         items.show = false
       }
     },
+<<<<<<< HEAD
     changeBigColor(index) {
       if (this.allColor[index].restColor != '') return
       this.allColor[index].restColor = this.allColor[index].bigColor
@@ -151,16 +184,31 @@ export default {
     // 当改变chrome选择器的颜色时重新刷新颜色
     updataChrome(index) {
       this.changeBigColor(index)
+=======
+    updateColor() {
+      for (let i = 0; i < this.allColor.length; i++) {
+        this.$refs.bigColor[i].style.background = this.allColor[i].bigColor
+      }
+    },
+    // 当改变chrome选择器的颜色时重新刷新颜色
+    updataChrome(index) {
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
       let colors = this.allColor[index]
       let head = ''
       for (let i = 0; i < colors.chromeColor.length; i++) {
         head += ',' + colors.chromeColor[i].color.hex
         colors.bigColor = 'linear-gradient(to top right' + head + ')'
       }
+<<<<<<< HEAD
       // this.updateColor()
     },
     add(index) {
       this.changeBigColor(index)
+=======
+      this.updateColor()
+    },
+    add(index) {
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
       if (this.allColor[index].chromeColor.length < 5) {
         this.allColor[index].chromeColor.push({
           color: {
@@ -180,6 +228,7 @@ export default {
       }
     },
     reset(index) {
+<<<<<<< HEAD
       this.changeBigColor(index)
       this.allColor[index].bigColor = this.allColor[index].restColor
       this.allColor[index].restColor = ''
@@ -191,13 +240,27 @@ export default {
         this.allColor[index].chromeColor[--i].color.hex = ccolor
       }
 
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
       this.allColor[index].chromeColor = this.allColor[index].chromeColor.slice(
         0,
         this.allColor[index].chromeColor.length - this.newColor
       )
       this.newColor = 0
+<<<<<<< HEAD
       this.updataChrome(index)
       // this.updateColor()
+=======
+      let head = '',
+        color = ''
+      for (const key of this.allColor[index].chromeColor) {
+        color += ',' + key.color.hex
+        head = 'linear-gradient(to top right' + color + ')'
+      }
+      this.allColor[index].bigColor = ''
+      this.allColor[index].bigColor = head
+      this.updateColor()
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
     },
     copy(index) {
       let head = ''

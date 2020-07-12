@@ -2,11 +2,15 @@
   <div class="wrapper" @click.self="showColors">
     <main>
       <div class="container" v-for="(item, index) in allColor" :key="index">
+<<<<<<< HEAD
         <div
           class="color"
           ref="bigColor"
           :style="{ background: item.bigColor }"
         ></div>
+=======
+        <div class="color" ref="bigColor"></div>
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
         <div class="set">
           <div
             @click="showColor(items)"
@@ -17,6 +21,10 @@
           >
             <div @click="chrome(items)" v-show="items.show">
               <chrome-picker
+<<<<<<< HEAD
+=======
+                ref="chrome"
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
                 v-model="items.color"
                 @click.native="updataChrome(index)"
               />
@@ -47,7 +55,10 @@ export default {
       allColor: [
         {
           bigColor: 'linear-gradient(to top right ,#FF9A8B, #FF6A88,#FF99AC)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FF9A8B' }, show: false },
             { color: { hex: '#FF6A88' }, show: false },
@@ -56,7 +67,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#8EC5FC, #E0C3FC)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#8EC5FC' }, show: false },
             { color: { hex: '#E0C3FC' }, show: false }
@@ -64,7 +78,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#FBAB7E, #F7CE68)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FBAB7E' }, show: false },
             { color: { hex: '#F7CE68' }, show: false }
@@ -72,7 +89,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#FA8BFF, #2BD2FF,#2BFF88)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FA8BFF' }, show: false },
             { color: { hex: '#2BD2FF' }, show: false },
@@ -81,7 +101,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#FAD961, #F76B1C)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FAD961' }, show: false },
             { color: { hex: '#F76B1C' }, show: false }
@@ -89,7 +112,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#FBDA61, #FF5ACD)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#FBDA61' }, show: false },
             { color: { hex: '#FF5ACD' }, show: false }
@@ -97,7 +123,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#4158D0, #C850C0,#FFCC70)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#4158D0' }, show: false },
             { color: { hex: '#C850C0' }, show: false },
@@ -106,7 +135,10 @@ export default {
         },
         {
           bigColor: 'linear-gradient(to top right ,#85FFBD, #FFFB7D)',
+<<<<<<< HEAD
           restColor: '',
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
           chromeColor: [
             { color: { hex: '#85FFBD' }, show: false },
             { color: { hex: '#FFFB7D' }, show: false }
@@ -121,7 +153,11 @@ export default {
     'chrome-picker': Chrome
   },
   mounted() {
+<<<<<<< HEAD
     // this.updateColor()
+=======
+    this.updateColor()
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
   },
   methods: {
     showColor(item) {
@@ -140,6 +176,7 @@ export default {
         items.show = false
       }
     },
+<<<<<<< HEAD
     changeBigColor(index) {
       if (this.allColor[index].restColor != '') return
       this.allColor[index].restColor = this.allColor[index].bigColor
@@ -152,16 +189,31 @@ export default {
     // 当改变chrome选择器的颜色时重新刷新颜色
     updataChrome(index) {
       this.changeBigColor(index)
+=======
+    updateColor() {
+      for (let i = 0; i < this.allColor.length; i++) {
+        this.$refs.bigColor[i].style.background = this.allColor[i].bigColor
+      }
+    },
+    // 当改变chrome选择器的颜色时重新刷新颜色
+    updataChrome(index) {
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
       let colors = this.allColor[index]
       let head = ''
       for (let i = 0; i < colors.chromeColor.length; i++) {
         head += ',' + colors.chromeColor[i].color.hex
         colors.bigColor = 'linear-gradient(to top right' + head + ')'
       }
+<<<<<<< HEAD
       // this.updateColor()
     },
     add(index) {
       this.changeBigColor(index)
+=======
+      this.updateColor()
+    },
+    add(index) {
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
       if (this.allColor[index].chromeColor.length < 5) {
         this.allColor[index].chromeColor.push({
           color: {
@@ -181,6 +233,7 @@ export default {
       }
     },
     reset(index) {
+<<<<<<< HEAD
       this.changeBigColor(index)
       this.allColor[index].bigColor = this.allColor[index].restColor
       this.allColor[index].restColor = ''
@@ -192,13 +245,27 @@ export default {
         this.allColor[index].chromeColor[--i].color.hex = ccolor
       }
 
+=======
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
       this.allColor[index].chromeColor = this.allColor[index].chromeColor.slice(
         0,
         this.allColor[index].chromeColor.length - this.newColor
       )
       this.newColor = 0
+<<<<<<< HEAD
       this.updataChrome(index)
       // this.updateColor()
+=======
+      let head = '',
+        color = ''
+      for (const key of this.allColor[index].chromeColor) {
+        color += ',' + key.color.hex
+        head = 'linear-gradient(to top right' + color + ')'
+      }
+      this.allColor[index].bigColor = ''
+      this.allColor[index].bigColor = head
+      this.updateColor()
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
     },
     copy(index) {
       let head = ''

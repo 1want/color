@@ -18,6 +18,7 @@ module.exports = {
       'vue-router': 'VueRouter',
       'element-ui': 'ELEMENT'
     })
+<<<<<<< HEAD
   }
   // configureWebpack: config => {
   //   if (process.env.NODE_ENV === 'production') {
@@ -36,4 +37,24 @@ module.exports = {
   //     }
   //   }
   // }
+=======
+  },
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      return {
+        plugins: [
+          new CompressionWebpackPlugin({
+            // filename: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp(
+              '\\.(' + productionGzipExtensions.join('|') + ')$'
+            ),
+            threshold: 10240, //对超过10k的数据进行压缩
+            minRatio: 0.6 // 压缩比例，值为0 ~ 1
+          })
+        ]
+      }
+    }
+  }
+>>>>>>> 6208b11c45bdd9c0506d8018b2da6892315d64c0
 }
