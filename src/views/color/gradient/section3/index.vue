@@ -197,7 +197,11 @@ export default {
       )
       this.newColor = 0
       this.updataChrome(index)
+<<<<<<< HEAD
       // this.updateColor()
+=======
+      this.updateColor()
+>>>>>>> 4ca91a0649ad9a498870efc9fd9547a41eacb309
     },
     copy(index) {
       let head = ''
